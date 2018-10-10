@@ -6,6 +6,10 @@ HEIGHT = 20;
 WIDTH = 15;
 TIMER = false;
 
+$("window-controls").mouseover(function() {
+    $(this).toggleClass("jogo-content");
+});
+
 // função que gera indíce randomico tanto para linha e coluna
 function getUniqueRandomIndexesIn2DArray(table, indexes) {
     indexes = indexes ? indexes : [];
@@ -72,9 +76,10 @@ for (var i = 0; i < HEIGHT; i++) {
             }
         });
 
+
         button.mouseup(function () {
             $("#reset").removeClass("wow");
-            if (!$(this).hasClass("red-flag")) {
+                if (!$(this).hasClass("red-flag") && event.which !== 3) {
                 if ($(this).parent().hasClass("mine")) {
                     $("td .button").each(function (index, button) {
                         button.remove();
@@ -128,6 +133,7 @@ $.each(mine_indexes, function(index, coordinates) {
     mine.addClass("mine");
 });
 
+
 $.each(mine_indexes, function (index, coordinates) {
     var adjacent_cells = getAdjacentCellIndexes(coordinates[1], coordinates[0]);
     $.each(adjacent_cells, function(index, coordinates) {
@@ -167,6 +173,17 @@ $.each(mine_indexes, function (index, coordinates) {
     })
 });
 
+
+        // var resetButton = $("#reset");
+        // resetButton.click(function() {
+        //     if ($(this).hasClass("game-over")) {
+        //         $(this).reset;
+        //     else ($(this).hasClass("button")) {
+        //              $(this).reset
+                
+        // }
+
+
 $.each(field_matrix, function(index, row) {
     $.each(row, function(index, cell) {
         var number = $(cell).data("mines");
@@ -175,3 +192,5 @@ $.each(field_matrix, function(index, row) {
         }
     });
 });
+
+        

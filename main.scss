@@ -48,7 +48,30 @@ body {
         }
     }
 }
-
+ .jogo-btn {
+    margin-right: 10px;
+    font-size: 14px;
+    border: none;
+    background-color: lightgray;
+  }
+  
+  .jogo-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: lightgray;
+    a {
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 5px
+    }
+  }
+  .jogo:hover .jogo-content {
+    display: block;
+  }
+  
 .window {
     background-color: $windows-light-gray;
     border: 2px outset darkgray;
@@ -57,7 +80,7 @@ body {
     width: 480px;
     font-size: 14px;
 
-    .window-header {
+    &-header {
         background-color: $windows-blue;
         font-weight: bold;
         padding: 5px;
@@ -69,10 +92,11 @@ body {
 
     .window-controls {
         padding: 10px 5px;
+        display: flex;
 
         a {
             text-decoration: none;
-            display: inline-block;
+            display: block;
             margin-right: 10px;
 
             &:hover {
