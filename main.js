@@ -74,7 +74,7 @@ for (var i = 0; i < HEIGHT; i++) {
 
         button.mouseup(function () {
             $("#reset").removeClass("wow");
-            if (!$(this).hasClass("red-flag")) {
+            if (!$(this).hasClass("red-flag") && event.which !== 3) {
                 if ($(this).parent().hasClass("mine")) {
                     $("td .button").each(function (index, button) {
                         button.remove();
