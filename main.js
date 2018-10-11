@@ -225,13 +225,13 @@ function createNumbers() {
             }
         })
     });
+    
+    $.each(field_matrix, function(index, row) {
+        $.each(row, function(index, cell) {
+            var number = $(cell).data("mines");
+            if (number > 0) {
+                $(cell).append(number);
+            }
+        });
+    })
 }
-  
-$.each(field_matrix, function(index, row) {
-    $.each(row, function(index, cell) {
-        var number = $(cell).data("mines");
-        if (number > 0) {
-            $(cell).append(number);
-        }
-    });
-})
