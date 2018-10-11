@@ -6,6 +6,10 @@ HEIGHT = 20;
 WIDTH = 15;
 TIMER = false;
 
+$("window-controls").mouseover(function() {
+    $(this).toggleClass("jogo-content");
+});
+
 // função que gera indíce randomico tanto para linha e coluna
 function getUniqueRandomIndexesIn2DArray(table, indexes) {
     indexes = indexes ? indexes : [];
@@ -183,7 +187,6 @@ function createMines() {
 }
 
 function createNumbers() {
-
     $.each(mine_indexes, function (index, coordinates) {
         var adjacent_cells = getAdjacentCellIndexes(coordinates[0], coordinates[1]);
         $.each(adjacent_cells, function (index, coordinates) {
@@ -222,14 +225,13 @@ function createNumbers() {
             }
         })
     });
-
-    $.each(field_matrix, function (index, row) {
-        $.each(row, function (index, cell) {
-            var number = $(cell).data("mines");
-            if (number > 0) {
-                $(cell).append(number);
-            }
-        });
-    });
-
 }
+  
+$.each(field_matrix, function(index, row) {
+    $.each(row, function(index, cell) {
+        var number = $(cell).data("mines");
+        if (number > 0) {
+            $(cell).append(number);
+        }
+    });
+})
