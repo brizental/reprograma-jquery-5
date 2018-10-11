@@ -235,3 +235,39 @@ function createNumbers() {
         });
     })
 }
+
+getScores();
+
+
+function getScores() {
+    $.ajax('https://campo-minado.herokuapp.com/get').done(function(data) { 
+        $('#scores__table tr:not(:first-child)').remove();
+
+        var pontuacoes = data; 
+        for (const ponto of pontuacoes) { 
+            var nome = ponto.name;
+            var data = ponto.timestamp;
+            var score = ponto.score;
+            
+            // var timestamp = data.toLocaleString('pt-br', 
+            //     { month: 'short', hour: '2-digit', minute: '2-digit', second: '2-digit'}
+            // );
+        
+            if (nome !== '') {
+                var row = $("<tr>");
+
+                row.html(`
+                    <td>${nome}</td>
+                    <td>${data}</td>
+                    <td>${score}</td>
+                `);
+
+                $('#scores table').append(row);
+            }
+        } 
+    });
+}
+
+setInterval(function() {
+    getScores();
+}, 10000);

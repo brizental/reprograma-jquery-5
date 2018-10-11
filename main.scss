@@ -11,12 +11,14 @@ $windows-light-gray: #d6cfc7;
 }
 
 body {
-    padding: 50px;
+    padding: 20px 50px 50px 50px;
     background-image: url('./imgs/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
     position: relative;
+    display: flex;
+    justify-content: space-between;
 }
 
 .button {
@@ -195,5 +197,19 @@ body {
                 }
             }
         }
+    }
+}
+
+#scores {
+    height: 370px;
+    overflow-y: scroll;
+
+    table, tr {
+        width: 450px;
+    }
+
+    td, th {
+        max-width: 150px;
+        word-break: break-all;
     }
 }
